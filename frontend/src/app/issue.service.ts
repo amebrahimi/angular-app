@@ -38,10 +38,12 @@ export class IssueService {
       status: status
     };
 
+    console.log("this is the issue object" + issue);
+    
     return this.http.post(`${this.uri}/issues/update/${id}`, issue)
   }
 
   deleteIssue(id){
-    return this.http.get(`${this.uri}/issues/delete/${id}`)
+    return this.http.delete(`${this.uri}/issues/${id}`)
   }
 }

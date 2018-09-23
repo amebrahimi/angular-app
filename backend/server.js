@@ -55,7 +55,7 @@ router.route('/issues/add').post((req, res) => {
 router.route('/issues/update/:id').post((req, res) => {
     Issue.findById(req.params.id, (err, issue) => {
         if (!issue){
-            return next(new Error('Could not load document'));
+            return "khers";
         } else {
             issue.title = req.body.title;
             issue.responsible = req.body.responsible;
@@ -72,7 +72,7 @@ router.route('/issues/update/:id').post((req, res) => {
     });
 });
 
-router.route('/issues/delete/:id').get((req, res) => {
+router.route('/issues/:id').delete((req, res) => {
     Issue.findByIdAndRemove({_id: req.params.id}, (err, issue) =>{
         if(err){
             res.json(err);
